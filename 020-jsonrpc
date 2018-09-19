@@ -1,0 +1,11 @@
+jsonrpc
+
+三个接口:
++ /jsonrpc/common
++ /jsonrpc/db
++ /jsonrpc/object
+
+不能跨域访问, 
+后端用 python 通过 request 等插件可以访问. 
+前端用 js 不能访问, ------ 未严格测试
+
