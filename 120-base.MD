@@ -27,27 +27,26 @@ public_partner,res.partner,
 public_user,res.users
 ```
 
-创建 公司main_company，同时增加一个参与人main_partner
-创建 用户user_root，同时增加一个参与人partner_root。该用户管理上述公司。
-创建 用户 default_user。新增用户时，从这儿复制权限==需要确认该功能。
-创建 用户 public_user。未激活。如果激活了 是什么？
++ 创建 公司main_company，同时增加一个参与人main_partner
++ 创建 用户user_root，同时增加一个参与人partner_root。该用户管理上述公司。
++ 创建 用户 default_user。新增用户时，从这儿复制权限==需要确认该功能。
++ 创建 用户 public_user。未激活。如果激活了 是什么？
 
 
 /addons/base/res/res_partner_data.xml
-res.partner.title，5条记录
-res.partner.industry，若干个 行业
++ res.partner.title，5条记录
++ res.partner.industry，若干个 行业
 
-Model
 res.company 公司
-几乎所有的其他模型都有一个字段叫做 company_id 。没有 company_id的 是否应该特别说明一下？
-以后不特别说明，则该模型是 公司专属的。而不属于任何公司的模型 称为公共模型。
+- 几乎所有的其他模型都有一个字段叫做 company_id 。没有 company_id的 是否应该特别说明一下？
+- 以后不特别说明，则该模型是 公司专属的。而不属于任何公司的模型 称为公共模型。
 
-早期设计odoo8时， res.comapny 继承自 res.partner。现在odoo10以后，取消了继承关系。
-但是一些属性依然放在 res.partner 里
+- 早期设计odoo8时， res.comapny 继承自 res.partner。现在odoo10以后，取消了继承关系。
+- 但是一些属性依然放在 res.partner 里
 
-公司自己构成上下级层级关系。parent_id / child_ids
-res.users与res.company是 多对多关系。公司有多个用户，允许这些用户访问我公司的数据。
-公司有唯一的货币。货币是公共模型。
+- 公司自己构成上下级层级关系。parent_id / child_ids
+- res.users与res.company是 多对多关系。公司有多个用户，允许这些用户访问我公司的数据。
+- 公司有唯一的货币。货币是公共模型。
 
 model|field|type|ref|string|note
 -----|-----|----|---|------|----
