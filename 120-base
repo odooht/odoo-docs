@@ -49,9 +49,10 @@ res.company 公司
 res.users与res.company是 多对多关系。公司有多个用户，允许这些用户访问我公司的数据。
 公司有唯一的货币。货币是公共模型。
 
-field | type | ref | ref id | string
---- | --- | ---
-parent_id | Many2one | res.company | | Parent Company |
+| field | type | ref | ref id | string |
+| --- | --- | --- |
+| parent_id | Many2one | res.company | | Parent Company |
+
 
 
 res.users 用户模型
