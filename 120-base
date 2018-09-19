@@ -49,7 +49,7 @@ res.company 公司
 res.users与res.company是 多对多关系。公司有多个用户，允许这些用户访问我公司的数据。
 公司有唯一的货币。货币是公共模型。
 
-![Company](http://note.youdao.com/noteshare?id=88d14d049ea2254f61cdae258fc7460b ''Company'')
+![Company](https://odoocdn.com/openerp_website/static/src/img/2018/home/screen_fly.gif ''Company'')
 
 res.users 用户模型
 继承自 res.partner，
