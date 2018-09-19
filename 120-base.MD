@@ -50,7 +50,7 @@ res.users与res.company是 多对多关系。公司有多个用户，允许这�
 公司有唯一的货币。货币是公共模型。
 
 model|field|type|ref|ref id|string|note
----|---|---|--|--|--
+---|---|---|--|--|--|--
 res.company|parent_id|Many2one|res.company||Parent Company|母公司
 res.company|child_ids|One2many|res.company|parent_id|Child Companies|子公司
 res.company|partner_id|Many2one|res.partner||Partner|参与人,引入一些计算列
