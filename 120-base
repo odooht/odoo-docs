@@ -49,7 +49,10 @@ res.company 公司
 res.users与res.company是 多对多关系。公司有多个用户，允许这些用户访问我公司的数据。
 公司有唯一的货币。货币是公共模型。
 
-![Company](https://odoocdn.com/openerp_website/static/src/img/2018/home/screen_fly.gif ''Company'')
+field | type | ref | ref id | string
+--- | --- | ---
+parent_id | Many2one | res.company | | Parent Company |
+
 
 res.users 用户模型
 继承自 res.partner，
@@ -58,7 +61,6 @@ res.users 用户模型
 用户当前仅供职于一家公司，但是可以访问多家公司的数据。
 用户每次登陆，记录日志。
 
-![Users](http://xxx ''Users'')
 
 res.partner 参与人模型
 这是个大杂烩，客户、供应商、客户供应商的联系人、地址都是它。公司、员工、用户 等 基于它。
@@ -70,7 +72,6 @@ res.partner.bank，参与人的银行账号。
 res.partner.industry（公共模型），参与人是公司时，行业类型。
 res.country，res.country.state，参与人对应的 国家和 州/省
 
-![Partner](http://xxx ''Partner'')
 
 
 res.country，res.country.state，res.country.group, res.currency 是公共模型。
@@ -82,8 +83,6 @@ res.country.state 属于某个国家。
 res.bank 是公共模型。
 参与人 以 某币种 在某银行 开设银行账户。
 参与人是  公司专属模型，故  银行账户也是 公司专属模型。
-
-![Bank](http://xxx ''Bank'')
 
 
 综上，在 资源中，语言、国家、货币、州、银行、参与人分类、参与人行业类型、参与人头衔、
