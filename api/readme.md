@@ -2,15 +2,15 @@
 * 所有的请求均为 post 方法
 * 请求协议为 jsonrpc 2.0
 * 只有两个 api,   
-  登录接口为 /json/user/login
+  登录接口为 /json/user/login  
   数据接口为 /json/api
 
 * 更多的功能通过数据接口的不同参数来搞定  
-* 登录接口的参数为 {'login':'my_account', 'password':'my_password'}
-* 数据接口的参数 {'model': 'res.users', method: 'read', args: [1], kwargs: {}}
-  其中 model 为 odoo 模型名
-  method 为方法名 有search, search_read, read, write, create, unlink 
-  args, kwargs 是参数, 
+* 登录接口的参数为 {db:'database_name', 'login':'my_account', 'password':'my_password'}
+* 数据接口的参数 {'model': 'res.users', method: 'read', args: [1], kwargs: {}}  
+  其中 model 为 odoo 模型名  
+  method 为方法名 有search, search_read, read, write, create, unlink   
+  args, kwargs 是参数,   
 
 
 功能|方法名|参数|返回值|返回
@@ -22,16 +22,94 @@
 更新|write|id, vals|boolean|true或false
 删除|unlink|id|boolean|true或false
 
+
 参数名|数据类型|举例|说明
 -----|-------|---|----
 domain|list|[('name','like','smith')]|查询条件, 自定义的格式, 后续详细说明
 id|int|2|记录的id, 整型数
 ids|list|[1,2,3]|记录的id列表, 列表, 其中的元素是id
 fields|list|['name','login','email']|查询的哪些字段, 列表, 其中的元素是字段名
-vals|dict|{'name':'smith', 'email':'smith@odooht.com'}|创建或修改时, 各字段的值
+vals|dict|{'name':'smith',  'email':'smith@odooht.com'}|创建或修改时, 各字段的值
+records|list|[record]|查询到到结果, 列表, 其中到元素record
+record|dict|[{'id':1, 'name':'smith',  'email':'smith@odooht.com'}]|记录, 字典, key-value键值对, key是字段, value是字段的值
 
 
 domain 的格式
+列表,
+元素是 前缀表达式顺序的逻辑运算
+
+逻辑运算
+
+符号|含义|例子
+---|----|---
+&|与|
+\||或|
+!|非|
+expression|表达式|
+
+字段的数据类型
+
+类型名|中文名|说明
+-----|-----|---
+Integer|整型数|
+Float|浮点数|
+Char|字符串|
+Date|日期|
+Datetime|时间|
+Selection|选择项|数据库中是Char型, 其值必须是有限的几个可选固定值
+Many2one|多对一|数据库中是Integer, 对应另外一个模型的id
+One2many|一对多|对应另外一个模型的多个id, 对应模型中必须有一个相应的Many2one字段. 数据库中不存储. 
+Many2many|多对多|对应另外一个模型的多个id. 数据库中以关系表的方式存储, 关系表中存储两个模型的id
+
+
+字段读取时的格式
+
+类型名|格式|例子
+-----|---|----
+Integer||2
+Float||-23.23
+Char||'smith'
+Date|'YYYY-MM-DD'|'2018-10-10'
+Datetime|'YYYY-MM-DD hh-mm-ss'|'2018-10-10 10:10:10'
+Selection||'customer'
+Many2one|键值对,key是id,value是对应模型的name字段的值|[1,'apple']
+One2many|列表,元素为id|[1,2,3]
+Many2many|同One2many|
+
+字段写入时的格式
+
+类型名|格式|例子
+-----|---|----
+Integer||2
+Float||-23.23
+Char||'smith'
+Date|'YYYY-MM-DD'|'2018-10-10'
+Datetime|'YYYY-MM-DD hh-mm-ss'|'2018-10-10 10:10:10'
+Selection|写入时,必须是有效的值|'customer'
+Many2one|整型 id|1
+One2many|列表,元素是特殊格式,见下表|[(4,,1),(4,,2)]
+Many2many|同One2many|
+
+
+One2many Many2many字段写入时的格式
+列表list, 其元素是一个三元素的列表, 定义了对 One2many或Many2many字段的具体操作
+
+对One2many或Many2many字段的具体操作
+是一个三元素的列表, 
+第一个元素定义了操作类型, 整型数, 值域: 0,1,2,3,4,5,6
+第二个元素是参数1
+第三个元素是参数2
+
+值|操作|参数1|参数2|例子|不适用|不适用|说明
+--|---|----|----|----|---|----|---
+0|create||vals|(0,None,{'name':'smith'})|||以参数2做vals,在对应模型中新增记录 
+1|write|id|vals|(1,1,{'name':'smith'})|||以参数1为id,参数2做vals,在对应模型中修改记录 
+2|unlink|id||(2,1,)||create|以参数1为id,在对应模型中删除记录. 
+3|remove relation|id||(3,1,)|One2many|create|以参数1为id,在对应模型中删除记录. 
+4|add relation|id|  ||(4,1,)|One2many||以参数1为id,将对应模型中的记录, 加到关系表中. 
+5|remove all relation|||(5,)|One2many|create|删除所有的与对应模型的关联关系
+6|replace all relation||ids|(6,,[1,2,3])|One2many||以参数2为ids, 替换与对应模型的所有关联关系
+
 
 
 ```
@@ -106,17 +184,4 @@ def login(login,password):
     return jsonrpc(url, {'db': DB, 'login': login, 'password': password})
     
 ```
-
-{'db': db,'login':user, 'password':psw, 'type':'account'}
-
-
-
-其他接口雷同  
-所有接口的 方法 都是 post
-
-
-
-
-# 登录
-/json/user/login
 
