@@ -34,18 +34,46 @@ records|list|[record]|查询到到结果, 列表, 其中到元素record
 record|dict|[{'id':1, 'name':'smith',  'email':'smith@odooht.com'}]|记录, 字典, key-value键值对, key是字段, value是字段的值
 
 
-domain 的格式
-列表,
-元素是 前缀表达式顺序的逻辑运算
+domain 的格式  
+列表,  
+元素是 前缀表达式顺序的逻辑运算  
 
-逻辑运算
+逻辑运算  
 
 符号|含义|例子
 ---|----|---
 &|与|
 \||或|
 !|非|
-expression|表达式|
+expression|比较表达式|
+
+比较表达式的格式  
+比较表达式是一个列表, 三个元素   
+第一个元素是字段名
+第二个元素是比较运算符  
+第三个元素是被比较的值  
+
+比较运算符  
+
+符号|说明
+---|---
+=|等于
+!=|不等于
+>|等于
+>=|大于等于
+<|小于
+<=|小于等于
+=?|未设置或等于
+=like|模糊匹配,从头开始
+like|模糊匹配,任意位置
+not like|
+ilike|不分大小写的like
+not ilike|
+=ilike|不分大小写的ilike
+in|包含于
+not in|不包含于
+child_of| 我的 parent_id 是
+
 
 字段的数据类型
 
@@ -91,14 +119,14 @@ One2many|列表,元素是特殊格式,  见下表|[(4,,1),(4,,2)]
 Many2many|同One2many|
 
 
-One2many Many2many字段写入时的格式
-列表list, 其元素是一个三元素的列表,  定义了对 One2many或Many2many字段的具体操作
+One2many Many2many字段写入时的格式  
+列表list, 其元素是一个三元素的列表,  定义了对 One2many或Many2many字段的具体操作  
 
-对One2many或Many2many字段的具体操作
-是一个三元素的列表, 
-第一个元素定义了操作类型, 整型数,  值域: 0,1,2,3,4,5,6
-第二个元素是参数1
-第三个元素是参数2
+对One2many或Many2many字段的具体操作  
+是一个三元素的列表,   
+第一个元素定义了操作类型, 整型数,  值域: 0,1,2,3,4,5,6  
+第二个元素是参数1  
+第三个元素是参数2  
 
 值|操作|参数1|参数2|例子|不适用|不适用|说明
 --|---|----|----|----|---|----|---
@@ -106,7 +134,7 @@ One2many Many2many字段写入时的格式
 1|write|id|vals|(1,1,{'name':'smith'})|||以参数1为id,参数2做vals,在对应模型中修改记录 
 2|unlink|id||(2,1,)||create|以参数1为id,在对应模型中删除记录. 
 3|remove relation|id||(3,1,)|One2many|create|以参数1为id,在对应模型中删除记录. 
-4|add relation|id|  ||(4,1,)|One2many||以参数1为id,将对应模型中的记录, 加到关系表中. 
+4|add relation|id||(4,1,)|One2many||以参数1为id,将对应模型中的记录, 加到关系表中. 
 5|remove all relation|||(5,)|One2many|create|删除所有的与对应模型的关联关系
 6|replace all relation||ids|(6,,[1,2,3])|One2many||以参数2为ids, 替换与对应模型的所有关联关系
 
