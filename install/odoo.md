@@ -112,10 +112,14 @@ sudo apt-get install libxml2-dev libxslt-dev libevent-dev libsasl2-dev libldap2-
 sudo pip install -r requirements.txt  
 -----------------------------------------------
 
------for odoo12 install pip3 ----
+-----for odoo12 install pip3 ----  
 sudo apt install python3-pip  
 sudo apt install libldap2-dev libsasl2-dev  
 sudo pip3 install -r requirements.txt  
+
+locale  
+export LC_ALL=en_US.UTF-8  
+
 
 ###in database Create User "odoo" #####################
 sudo su - postgres -c "createuser -s odoo"  
@@ -125,6 +129,11 @@ sudo su - postgres -c "createuser -s odoo"
 #### alter user password  
 sudo -u postgres psql  
 ALTER USER odoo WITH PASSWORD 'odoo11';  
+
+### to quit
+\q 
+
+
 ####  postgre configure, so  pgAmin  access database  
 sudo nano /etc/postgresql/9.5/main/pg_hba.conf  
 ##line 92  

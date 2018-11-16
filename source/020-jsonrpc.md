@@ -9,7 +9,12 @@ jsonrpc
 后端用 python 通过 request 等插件可以访问. 
 前端用 js 不能访问, ------ 未严格测试
 
+odoo 11 在这里  
 odoo.http.CommonController
+
+odoo 12 在这里  
+odoo.addons.base.controllers.rpc.RPC
+
   odoo.http.dispatch_rpc
     /jsonrpc/common: odoo.service.common.dispatch
     /jsonrpc/db:     odoo.service.db.dispatch
