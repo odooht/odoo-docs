@@ -59,8 +59,8 @@ expression|比较表达式|
 ---|---
 =|等于
 !=|不等于
->|等于
->=|大于等于
+\>|等于
+\>=|大于等于
 <|小于
 <=|小于等于
 =?|未设置或等于
@@ -72,7 +72,7 @@ not ilike|
 =ilike|不分大小写的ilike
 in|包含于
 not in|不包含于
-child_of| 我的 parent_id 是
+child\_of| 我的 parent\_id 是
 
 
 字段的数据类型
