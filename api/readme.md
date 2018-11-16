@@ -56,10 +56,10 @@ Float|浮点数|
 Char|字符串|
 Date|日期|
 Datetime|时间|
-Selection|选择项|数据库中是Char型, 其值必须是有限的几个可选固定值
-Many2one|多对一|数据库中是Integer, 对应另外一个模型的id
-One2many|一对多|对应另外一个模型的多个id, 对应模型中必须有一个相应的Many2one字段. 数据库中不存储. 
-Many2many|多对多|对应另外一个模型的多个id. 数据库中以关系表的方式存储, 关系表中存储两个模型的id
+Selection|选择项|数据库中是Char型,   其值必须是有限的几个可选固定值
+Many2one|多对一|数据库中是Integer,   对应另外一个模型的id
+One2many|一对多|对应另外一个模型的多个id,   对应模型中必须有一个相应的Many2one字段.   数据库中不存储. 
+Many2many|多对多|对应另外一个模型的多个id.   数据库中以关系表的方式存储,   关系表中存储两个模型的id
 
 
 字段读取时的格式
@@ -72,7 +72,7 @@ Char||'smith'
 Date|'YYYY-MM-DD'|'2018-10-10'
 Datetime|'YYYY-MM-DD hh-mm-ss'|'2018-10-10 10:10:10'
 Selection||'customer'
-Many2one|键值对,key是id,value是对应模型的name字段的值|[1,'apple']
+Many2one|键值对,key是id,  value是对应模型的name字段的值|[1,'apple']
 One2many|列表,元素为id|[1,2,3]
 Many2many|同One2many|
 
@@ -87,16 +87,16 @@ Date|'YYYY-MM-DD'|'2018-10-10'
 Datetime|'YYYY-MM-DD hh-mm-ss'|'2018-10-10 10:10:10'
 Selection|写入时,必须是有效的值|'customer'
 Many2one|整型 id|1
-One2many|列表,元素是特殊格式,见下表|[(4,,1),(4,,2)]
+One2many|列表,元素是特殊格式,  见下表|[(4,,1),(4,,2)]
 Many2many|同One2many|
 
 
 One2many Many2many字段写入时的格式
-列表list, 其元素是一个三元素的列表, 定义了对 One2many或Many2many字段的具体操作
+列表list, 其元素是一个三元素的列表,  定义了对 One2many或Many2many字段的具体操作
 
 对One2many或Many2many字段的具体操作
 是一个三元素的列表, 
-第一个元素定义了操作类型, 整型数, 值域: 0,1,2,3,4,5,6
+第一个元素定义了操作类型, 整型数,  值域: 0,1,2,3,4,5,6
 第二个元素是参数1
 第三个元素是参数2
 
