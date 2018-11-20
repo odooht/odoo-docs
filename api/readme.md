@@ -138,7 +138,7 @@ One2many Many2many字段写入时的格式
 0|create||vals|(0,None,{'name':'smith'})|||以参数2做vals,在对应模型中新增记录 
 1|write|id|vals|(1,1,{'name':'smith'})|||以参数1为id,参数2做vals,在对应模型中修改记录 
 2|unlink|id||(2,1,)||create|以参数1为id,在对应模型中删除记录. 
-3|remove relation|id||(3,1,)|One2many|create|以参数1为id,在对应模型中删除记录. 
+3|remove relation|id||(3,1,)|One2many|create|以参数1为id,删除与对应模型的关联关系. 
 4|add relation|id||(4,1,)|One2many||以参数1为id,将对应模型中的记录, 加到关系表中. 
 5|remove all relation|||(5,)|One2many|create|删除所有的与对应模型的关联关系
 6|replace all relation||ids|(6,,[1,2,3])|One2many||以参数2为ids, 替换与对应模型的所有关联关系
@@ -210,11 +210,38 @@ DB = 'TT'
 
 def login(login,password):
     """
+    参数:  
+    login: 登录账号
+    password: 登录密码
+    
+    返回result:
+    sid: session id
+    uid: 用户id
+    
+    登录成功后, 将sid保存 备用. 
     
     """
     
     url = HOST + '/json/user/login'
     return jsonrpc(url, {'db': DB, 'login': login, 'password': password})
+
+def call(model,method, args=[], kwargs={}):
+    """
+    参数:  
+    model: 模型名
+    method: 方法名
+    args: 参数列表
+    kwargs: 参数字典
+    kwargs['context']['token']: session id
+    
+    返回result:
+    方法不同, 返回的 result 格式不同
+    
+    """
+    
+    token = kwargs['context']['token']
+    url = HOST + '/json/api?session_id=' + token
+    return jsonrpc(url, {'model': model, 'method': method, 'args': args, kwargs: kwargs})
     
 ```
 
