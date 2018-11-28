@@ -165,7 +165,7 @@ ctrl + C
 
 ---- to modify odoo.conf  
 sudo nano  /etc/odoo/odoo.conf  
-----to add log conf-----  
+----to modify log conf-----  
 logfile = /var/log/odoo/odoo.log  
 logrotate = True  
 ------  
@@ -173,19 +173,21 @@ logrotate = True
 sudo mkdir /var/log/odoo  
 sudo chown odoo:root /var/log/odoo  
 
-########################################
+########################################  
 sudo su - odoo -s /bin/bash  
 server/odoo-bin -c /etc/odoo/odoo.conf  
 
-#################################################
+#################################################  
 sudo cp ~/odoo-server /etc/init.d/odoo-server  
 
 sudo chmod 755  /etc/init.d/odoo-server  
 sudo chown root:  /etc/init.d/odoo-server  
-################################################
+
+################################################  
 sudo /etc/init.d/odoo-server start  
 sudo /etc/init.d/odoo-server stop  
-##################################################
+
+##################################################  
 sudo update-rc.d odoo-server defaults  
 ps aux | grep odoo  
 

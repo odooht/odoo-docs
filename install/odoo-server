@@ -21,7 +21,7 @@ DESC=odoo-server
 USER=odoo
 
 # Specify an alternate config file (Default: /etc/openerp-server.conf).
-CONFIGFILE="/etc/odoo-server.conf"
+CONFIGFILE="/etc/odoo/odoo.conf"
 
 # pidfile
 PIDFILE=/var/run/$NAME.pid
