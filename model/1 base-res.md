@@ -19,7 +19,7 @@ res.partner|ref|Internal Reference|Char|
 res.partner|lang|Language|Selection|
 res.partner|tz|Timezone|Selection|
 res.partner|tz\_offset|Timezone|Char|compute
-res.partner|user\_id|Salesperson|res.users|
+res.partner|user\_id|Salesperson|Many2one|res.users
 res.partner|vat|TIN|Char|Tax Identification Number
 res.partner|bank\_ids||One2many|res.partner.bank,partner\_id
 res.partner|website||Char|
