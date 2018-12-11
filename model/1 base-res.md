@@ -1,11 +1,3 @@
-
-
-model|field|string|type|note
------|-----|-----|----|----
-res.users|login||Char|
-res.users|password||Char|
-res.users|partner_id||Many2one|res.partner 继承自参与人
-
 model|field|String|type|note
 -----|-----|------|----|----
 res.partner|name|Name|Char|
@@ -53,6 +45,35 @@ res.partner|company_name||Char|
 res.partner|image||Binary|
 res.partner|image\_medium||Binary|
 res.partner|image\_small||Binary|
+
+model|field|string|type|note
+-----|-----|------|----|----
+res.partner.category|name||Char|
+res.partner.category|color||Integer|
+res.partner.category|parent\_id|Parent Category|Many2one|res.partner.category
+res.partner.category|child\_ids|Child Tags|One2many|res.partner.category
+res.partner.category|active||Boolean|
+res.partner.category|parent\_path||Char|
+res.partner.category|partner\_ids||Many2many|res.partner
+
+model|field|string|type|note
+-----|-----|------|----|----
+res.partner.title|name|Title|Char|
+res.partner.title|shortcut|Abbreviation|Char|
+
+model|field|string|type|note
+-----|-----|------|----|----
+res.partner.industry|name||Char|
+res.partner.industry|full_name||Char|
+res.partner.industry|active||Boolean|
+
+
+model|field|string|type|note
+-----|-----|------|----|----
+res.users|partner_id||Many2one|res.partner \_inherits
+res.users|login||Char|
+res.users|password||Char|
+res.users|new\_password||Char|
 
 
 
