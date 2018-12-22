@@ -79,7 +79,7 @@ res.bank|country||Many2one|'res.country'
 res.bank|email||Char|
 res.bank|phone||Char|
 res.bank|active||Boolean|
-res.bank|bic|Bank Identifier C  ode|Char|
+res.bank|bic|Bank Identifier<br> Code|Char|
 
 
 model|field|string|type|note
