@@ -67,6 +67,20 @@ res.partner.industry|name||Char|
 res.partner.industry|full_name||Char|
 res.partner.industry|active||Boolean|
 
+model|field|string|type|note
+-----|-----|------|----|----
+res.bank|name||Char|
+res.bank|street||Char|
+res.bank|street2||Char|
+res.bank|zip||Char|
+res.bank|city||Char|
+res.bank|state||Many2one|'res.country.state'
+res.bank|country||Many2one|'res.country'
+res.bank|email||Char|
+res.bank|phone||Char|
+res.bank|active||Boolean|
+res.bank|bic|Bank Identifier C\node|Char|
+
 
 model|field|string|type|note
 -----|-----|------|----|----
