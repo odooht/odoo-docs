@@ -24,7 +24,7 @@ res.partner|customer||Boolean|
 res.partner|supplier||Boolean|
 res.partner|employee||Boolean|
 res.partner|function|Job Position|Char|
-res.partner|type|Address Type|Selection|[('contact', 'Contact'),('invoice', 'Invoice address'),('delivery', 'Shipping address'),('other', 'Other address')]
+res.partner|type|Address Type|Selection|[('contact', 'Contact'),<br>('invoice', 'Invoice address'),<br>('delivery', 'Shipping address'),<br>('other', 'Other address')]
 res.partner|street||Char|
 res.partner|street2||Char|
 res.partner|zip||Char|
@@ -79,7 +79,7 @@ res.bank|country||Many2one|'res.country'
 res.bank|email||Char|
 res.bank|phone||Char|
 res.bank|active||Boolean|
-res.bank|bic|Bank Identifier<br> Code|Char|
+res.bank|bic|Bank Identifier Code|Char|
 
 
 model|field|string|type|note
