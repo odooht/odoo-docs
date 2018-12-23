@@ -2,8 +2,9 @@
 
 http://nightly.odoo.com/12.0/nightly/src/odoo_12.0.latest.zip  
 
+@[TOC]目录
 
-[[10 base-res]]
+## 10 base-res
 base 模块缺省自动安装,
 res 资源类, 包括 partner, users, company 等.
 ir 内部资源类, 包括 model, module, view, menu, action 等.
