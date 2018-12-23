@@ -39,17 +39,17 @@ ir 内部资源类, 包括 model, module, view, menu, action 等.
 从财务模块拆分出来 服务于 财务 和 hr_timesheet 模块
 
 ## 70 account
- 财务 模块.  依赖 产品模块, 分析模块
-71 account.account]] 科目
-72 account.move]]    会计凭证
-73 account.invoice]] 发票
-74 account.payment]] 收付款
-75 account.bank.statement]] 银行对账单
+ 财务 模块.  依赖 产品模块, 分析模块  
+* 71 account.account 科目
+* 72 account.move    会计凭证
+* 73 account.invoice 发票
+* 74 account.payment 收付款
+* 75 account.bank.statement 银行对账单
 
 ## 中国
-80 l10n\_multilang 多语言科目
-81 l10n\_cn 中国会计科目 及 省数据
-83 l10n\_cn\_city
+* 80 l10n\_multilang 多语言科目
+* 81 l10n\_cn 中国会计科目 及 省数据
+* 83 l10n\_cn\_city 中国城市
 
 ## 90 payment.md
   payment 模块, 依赖 财务模块
