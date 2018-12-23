@@ -1,5 +1,13 @@
 TBD 2018-12-22
 
+mail.channel
+* 频道模型
+
+
+TBD
+
+
+
 model|field|String|type|note
 -----|-----|------|----|----
 res.users||||

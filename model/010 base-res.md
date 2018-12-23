@@ -1,4 +1,93 @@
 
+res.partner模型
+* 根据 type 分为 contact 和 各种地址
+* 各种地址在销售订单中会用到
+* 客户,供应商, 员工 都是 contact
+* 三个布尔字段 customer,supplier,employee 区分客户,供应商,员工
+* 布尔字段 is\_company , 区分是个人还是公司
+* 若是 个人, 则 parent\_id 为其所属公司
+* 若是 公司, 则 child\_ids 为公司下的个人
+* 以此可以管理 公司客户和 个人客户, 并管理公司客户对应的联系人
+* user\_id 是负责该客户的我公司的销售员
+* category_id 注意是多对多字段. 可以给partner 增加 tag
+* partner 对应国家,省,城市, 其中城市是字符串
+* 可以使用一个扩展模块 base\_address\_city , 定义 city模型
+* 被 res.users 模型继承
+* user\_ids, 表示该partner的所有登录账号
+
+
+res.partner.category 
+* 联系人标签模型
+* 递归的树状结构, 可以分级定义多级标签
+
+res.partner.title
+* 联系人的头衔
+
+res.partner.industry
+* 联系人的行业类型
+
+res.bank
+* 银行
+
+res.partner.bank
+* 联系人的银行账号
+
+res.country
+* 国家
+
+res.country.group
+* 国家分组
+* 与国家是多对多关系
+
+res.country.state
+* 省
+
+res.city
+* 城市
+* 需要安装 base\_address\_city
+* 安装中国会计以后, 可以再安装 中国城市数据
+* l10n\_cn, l10n\_city
+
+res.currency
+* 货币
+
+res.currency.rate
+* 汇率
+* 以第一条数据 欧元为基础货币
+* 其他数据相对于第一条数据进行汇率折算
+
+res.company
+* 公司
+* 单公司应用场景下, 指的是自己的公司
+* 多公司应用场景下, 则平台服务于多家公司
+* 多数模型都有一个字段 comapny\_id, 确定该数据属于哪家公司
+* 一些没有 comapny\_id 的模型, 则明确该模型的数据由平台维护, 我们称其为公共模型
+* 这些模型: 语言、国家、货币、州、银行、参与人分类、参与人行业类型、参与人头衔, 是公共模型
+* 通过 parent\_id 和 child\_ids, 构成父子结构
+* 关联 res.partner 模型, 构成一对一关系
+* user_ids 指明管理该公司的账户
+
+res.groups
+* 权限组模型
+* 与 res.users 模型是多对多关系
+* 根据 ir.module.category, 对权限组进行分类
+* 指明对 model 和 rule 的访问权限
+
+res.users.log
+* 用户登录日志
+* 仅有 create\_uid, create\_date 4个字段
+* 用户每次登录会记录一条日志
+
+res.users
+* 用户模型
+* 继承自 res.partner 模型
+* company_ids 指明管理哪些公司
+
+
+初始安装
+* 创建一家公司 同时在 partner模型中有对应记录
+* 创建一个用户 admin
+
 
 model|field|String|type|note
 -----|-----|------|----|----
@@ -181,6 +270,33 @@ res.groups|category\_id||Many2one|ir.module.category
 res.groups|color||Integer|
 res.groups|full\_name||Char|compute
 res.groups|share||Boolean|
+
+
+model|field|string|type|note
+-----|-----|------|----|----
+res.company|name||Char|
+res.company|sequence||Integer|
+res.company|parent\_id||Many2one|res.company
+res.company|child\_ids||One2many|res.company
+res.company|partner\_id||Many2one|res.partner
+res.company|logo||Binary|partner\_id.image
+res.company|logo\_web||Binary|compute
+res.company|currency\_id||Many2one|res.currency
+res.company|user\_ids|Accepted Users|Many2many|res.users
+res.company|account\_no|Account No.|Char|
+res.company|street||Char|
+res.company|street2||Char|
+res.company|zip||Char|
+res.company|city||Char|
+res.company|state\_id||Many2one|res.country.state
+res.company|bank\_ids|Bank Accounts|One2many|res.partner.bank
+res.company|country\_id||Many2one|res.country
+res.company|email||Char|
+res.company|phone||Char|
+res.company|website||Char|
+res.company|vat||Char|
+res.company|company_registry||Char|
+
 
 
 需要安装 base\_address\_city

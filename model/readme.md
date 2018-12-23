@@ -46,10 +46,12 @@ ir 内部资源类, 包括 model, module, view, menu, action 等.
 * 074 account.payment 收付款
 * 075 account.bank.statement 银行对账单
 
-## 中国
-* 080 l10n\_multilang 多语言科目
-* 081 l10n\_cn 中国会计科目 及 省数据
-* 083 l10n\_cn\_city 中国城市
+## 80 中国本地 财务 城市
+* l10n\_multilang 多语言科目
+* l10n\_cn 中国会计科目 及 省数据
+* l10n\_cn\_city 中国城市
+* l10n\_cn\_standard      中国企业会计准则
+* l10n\_cn\_small\_business  中国小企业会计制度
 
 ## 090 payment.md
   payment 模块, 依赖 财务模块
