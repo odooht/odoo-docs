@@ -1,6 +1,9 @@
 
 ![res.partner](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.png)
-
+![res.partner.bank](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.bank.png)
+![res.partner.geo](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.geo.png)
+![res.users](https://github.com/odooht/odoo-docs/blob/master/model/image/res.users.png)
+![res.company](https://github.com/odooht/odoo-docs/blob/master/model/image/res.company.png)
 
 
 
