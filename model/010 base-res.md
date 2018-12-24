@@ -1,8 +1,22 @@
 
+## Partner 相关模型
+
 ![res.partner](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.png)
+
+## Partner 银行账户模型
+
 ![res.partner.bank](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.bank.png)
+
+## Partner 地址模型
+
 ![res.partner.geo](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.geo.png)
+
+## Users 模型
+
 ![res.users](https://github.com/odooht/odoo-docs/blob/master/model/image/res.users.png)
+
+## Company 模型
+
 ![res.company](https://github.com/odooht/odoo-docs/blob/master/model/image/res.company.png)
 
 
