@@ -1,4 +1,9 @@
 
+![res.partner](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.png)
+
+
+
+
 res.partner模型
 * 根据 type 分为 contact 和 各种地址
 * 各种地址在销售订单中会用到
