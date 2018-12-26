@@ -144,7 +144,7 @@ res.partner|image\_medium||Binary|
 res.partner|image\_small||Binary|
 
 model|field|string|type|relation|note
------|-----|------|----|----
+-----|-----|------|----|--------|----
 res.partner.category|name||Char||required=True, <br/>translate=True
 res.partner.category|color||Integer||
 res.partner.category|parent\_id|Parent Category|Many2one|res.partner.category|index=True, <br>ondelete='cascade'
