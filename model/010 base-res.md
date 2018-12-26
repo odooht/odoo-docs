@@ -143,15 +143,15 @@ res.partner|image||Binary|
 res.partner|image\_medium||Binary|
 res.partner|image\_small||Binary|
 
-model|field|string|type|note
+model|field|string|type|relation|note
 -----|-----|------|----|----
-res.partner.category|name||Char|
-res.partner.category|color||Integer|
-res.partner.category|parent\_id|Parent Category|Many2one|res.partner.category
-res.partner.category|child\_ids|Child Tags|One2many|res.partner.category
-res.partner.category|active||Boolean|
-res.partner.category|parent\_path||Char|
-res.partner.category|partner\_ids||Many2many|res.partner
+res.partner.category|name||Char||required=True, <br/>translate=True
+res.partner.category|color||Integer||
+res.partner.category|parent\_id|Parent Category|Many2one|res.partner.category|index=True, <br>ondelete='cascade'
+res.partner.category|child\_ids|Child Tags|One2many|res.partner.category,parent\_id|
+res.partner.category|active||Boolean||default=True, <br/>The active field allows you to hide the category without removing it.
+res.partner.category|parent\_path||Char||
+res.partner.category|partner\_ids||Many2many|res.partner|
 
 model|field|string|type|note
 -----|-----|------|----|----
