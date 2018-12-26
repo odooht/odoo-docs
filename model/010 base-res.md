@@ -3,32 +3,20 @@
 
 ![res.partner](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.png)
 
-## Partner 银行账户模型
-
-![res.partner.bank](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.bank.png)
-
-## Partner 地址模型
-
-![res.partner.geo](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.geo.png)
-
-## Users 模型
-
-![res.users](https://github.com/odooht/odoo-docs/blob/master/model/image/res.users.png)
-
-## Company 模型
-
-![res.company](https://github.com/odooht/odoo-docs/blob/master/model/image/res.company.png)
+model|中文名字|note
+-----|-------|----
+res.partner.category|业务伙伴标签|递归的树状结构, 可以分级定义多级标签
+res.partner.title|业务伙伴头衔|
+res.partner.industry|业务伙伴行业类型|
+res.partner|业务伙伴|地址<br>客户,供应商,员工<br>个人,公司<br>都在该模型中
 
 
 
-res.partner模型
-* 根据 type 分为 contact 和 各种地址
-* 各种地址在销售订单中会用到
-* 客户,供应商, 员工 都是 contact
-* 三个布尔字段 customer,supplier,employee 区分客户,供应商,员工
-* 布尔字段 is\_company , 区分是个人还是公司
-* 若是 个人, 则 parent\_id 为其所属公司
-* 若是 公司, 则 child\_ids 为公司下的个人
+* type, customer, supplier, employee, is\_company
+* 几个布尔字段, 对联系人进行分类
+* 联系人或 各种地址. 客户,供应商,员工. 个人还是公司. 
+* 若为 个人, 则 parent\_id 为其所属公司
+* 若为 公司, 则 child\_ids 为公司下的个人
 * 以此可以管理 公司客户和 个人客户, 并管理公司客户对应的联系人
 * user\_id 是负责该客户的我公司的销售员
 * category_id 注意是多对多字段. 可以给partner 增加 tag
@@ -38,48 +26,60 @@ res.partner模型
 * user\_ids, 表示该partner的所有登录账号
 
 
-res.partner.category 
-* 联系人标签模型
-* 递归的树状结构, 可以分级定义多级标签
 
-res.partner.title
-* 联系人的头衔
+## Partner 银行账户模型
 
-res.partner.industry
-* 联系人的行业类型
+![res.partner.bank](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.bank.png)
 
-res.bank
-* 银行
+model|中文名字|note
+-----|-------|----
+res.bank|银行|
+res.partner.bank|业务伙伴的银行账号|
 
-res.partner.bank
-* 联系人的银行账号
+## Partner 地址模型
 
-res.country
-* 国家
+![res.partner.geo](https://github.com/odooht/odoo-docs/blob/master/model/image/res.partner.geo.png)
 
-res.country.group
-* 国家分组
-* 与国家是多对多关系
+model|中文名字|note
+-----|-------|----
+res.country.group|国家分组
+res.country|国家|
+res.country.state|省
+res.city|城市|需要安装 base\_address\_city <br> 安装中国会计以后, 可以再安装 中国城市数据 <br>l10n\_cn, l10n\_city
+res.currency|货币|
+res.currency.rate|汇率|以第一条数据 欧元为基础货币<br>其他数据相对于第一条数据进行汇率折算
 
-res.country.state
-* 省
 
-res.city
-* 城市
-* 需要安装 base\_address\_city
-* 安装中国会计以后, 可以再安装 中国城市数据
-* l10n\_cn, l10n\_city
+## Users 模型
 
-res.currency
-* 货币
+![res.users](https://github.com/odooht/odoo-docs/blob/master/model/image/res.users.png)
 
-res.currency.rate
-* 汇率
-* 以第一条数据 欧元为基础货币
-* 其他数据相对于第一条数据进行汇率折算
+model|中文名字|note
+-----|-------|----
+res.groups|权限组模型|
+res.users.log|用户登录日志|
+res.users|用户模型|继承自res.partner模型
 
-res.company
-* 公司
+* 权限组模型
+* 根据 ir.module.category, 对权限组进行分类
+* 指明对 model 和 rule 的访问权限
+
+* 用户登录日志
+* 仅有 create\_uid, create\_date 4个字段
+* 用户每次登录会记录一条日志
+
+* 用户模型
+* company_ids 指明管理哪些公司
+
+
+## Company 模型
+
+![res.company](https://github.com/odooht/odoo-docs/blob/master/model/image/res.company.png)
+
+model|中文名字|note
+-----|-------|----
+res.company|公司|
+
 * 单公司应用场景下, 指的是自己的公司
 * 多公司应用场景下, 则平台服务于多家公司
 * 多数模型都有一个字段 comapny\_id, 确定该数据属于哪家公司
@@ -88,22 +88,6 @@ res.company
 * 通过 parent\_id 和 child\_ids, 构成父子结构
 * 关联 res.partner 模型, 构成一对一关系
 * user_ids 指明管理该公司的账户
-
-res.groups
-* 权限组模型
-* 与 res.users 模型是多对多关系
-* 根据 ir.module.category, 对权限组进行分类
-* 指明对 model 和 rule 的访问权限
-
-res.users.log
-* 用户登录日志
-* 仅有 create\_uid, create\_date 4个字段
-* 用户每次登录会记录一条日志
-
-res.users
-* 用户模型
-* 继承自 res.partner 模型
-* company_ids 指明管理哪些公司
 
 
 初始安装
