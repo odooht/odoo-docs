@@ -11,7 +11,7 @@ product.packaging|产品包装|
 
 ## 产品属性
 
-![product](https://github.com/odooht/odoo-docs/blob/master/model/image/product.attribute.png)
+![product.attribute](https://github.com/odooht/odoo-docs/blob/master/model/image/product.attribute.png)
 
 model|中文名字|note
 -----|-------|----
@@ -23,7 +23,7 @@ product.template.attribute.exclusion|产品属性除外值
 
 ## 产品价格
 
-![product](https://github.com/odooht/odoo-docs/blob/master/model/image/product.price.png)
+![product.price](https://github.com/odooht/odoo-docs/blob/master/model/image/product.price.png)
 
 
 model|中文名字|note
@@ -31,9 +31,9 @@ model|中文名字|note
 product.pricelist|价格表|
 product.pricelist.item|价格项目|
 
-## 产品价格
+## 产品供应商
 
-![product](https://github.com/odooht/odoo-docs/blob/master/model/image/product.supplier.png)
+![product.supplier](https://github.com/odooht/odoo-docs/blob/master/model/image/product.supplier.png)
 
 
 model|中文名字|note
