@@ -1,7 +1,20 @@
+
+
+
+
 crm.team
 * 销售团队模型
 * 类型, sales 和 website
 * 有队长, 有成员
+
+## crm.team
+
+![sales.team](https://github.com/odooht/odoo-docs/blob/master/model/image/sales.team.png)
+
+model|中文名字|note
+-----|-------|----
+crm.team|销售团队|
+
 
 
 

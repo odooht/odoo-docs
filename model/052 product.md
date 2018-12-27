@@ -1,3 +1,47 @@
+## Product
+
+![product](https://github.com/odooht/odoo-docs/blob/master/model/image/product.png)
+
+model|中文名字|note
+-----|-------|----
+product.template|产品模版|
+product.category|产品类别|
+product.product|产品变体|
+product.packaging|产品包装|
+
+## 产品属性
+
+![product](https://github.com/odooht/odoo-docs/blob/master/model/image/product.attribute.png)
+
+model|中文名字|note
+-----|-------|----
+product.attribute|产品属性|
+product.attribute.value|产品属性值|
+product.template.attribute.line|产品模版属性可配置项|
+product.template.attribute.value|产品模版属性值|
+product.template.attribute.exclusion|产品属性除外值
+
+## 产品价格
+
+![product](https://github.com/odooht/odoo-docs/blob/master/model/image/product.price.png)
+
+
+model|中文名字|note
+-----|-------|----
+product.pricelist|价格表|
+product.pricelist.item|价格项目|
+
+## 产品价格
+
+![product](https://github.com/odooht/odoo-docs/blob/master/model/image/product.supplier.png)
+
+
+model|中文名字|note
+-----|-------|----
+product.supplierinfo|产品的供应商信息|
+
+
+
 
 初始安装
 * product.category 3条记录
@@ -24,36 +68,6 @@ product.product
 * 好几个价格 需要再梳理下
 * 产品属性值
 * 有多种包装形式
-
-product.packaging
-* 对产品对包装
-
-product.supplierinfo
-* 产品的供应商信息
-
-product.pricelist
-* 有多个价格项目
-
-product.pricelist.item
-* 针对 产品类别, 产品模版, 产品变种设置价格表
-
-
-res.partner
-* 可以对特定客户设置价格表
-
-
-product.attribute
-product.attribute.value
-* 多个属性
-* 每个属性有不同的值
-
-
-product.template.attribute.line
-* 产品模版 与属性 及属性值的 对应关系
-* 该产品模版有哪些属性, 哪些取值范围
-
-product.template.attribute.value
-product.template.attribute.exclusion
 
 
 
