@@ -1,6 +1,9 @@
 ## Project
 
 ![project](https://github.com/odooht/odoo-docs/blob/master/model/image/project.project.png)
+
+## Project Task
+
 ![project](https://github.com/odooht/odoo-docs/blob/master/model/image/project.task.png)
 
 
