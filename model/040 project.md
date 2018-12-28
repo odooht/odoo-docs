@@ -69,7 +69,6 @@ project.project|privacy_visibility|Privacy|Selection|default='portal'
 project.project|doc_count|Number of documents attached|Integer|compute
 project.project|date_start|Start Date|Date|
 project.project|date|Expiration Date|Date|index=True
-
 project.project|subtask_project_id|Sub-task Project|Many2one|project.project
 project.project|percentage_satisfaction_task|Happy % on Task|Integer|store=True
 project.project|rating_request_deadline||Datetime|
