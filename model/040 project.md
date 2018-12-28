@@ -1,17 +1,15 @@
+## Project
+
+![project](https://github.com/odooht/odoo-docs/blob/master/model/image/project.project.png)
+![project](https://github.com/odooht/odoo-docs/blob/master/model/image/project.task.png)
 
 
-project.project
-project.task
-project.task.type
-project.tags
-
-* 针对某个客户立项
-* 项目包含哪些阶段
-* 有多个任务
-* 每个任务处于不同阶段
-* 每个任务有多个项目标签
-
-* 客户 与 任务 o2m
+model|中文名字|note
+-----|-------|----
+project.project|项目|
+project.task|任务|
+project.task.type|任务类型|
+project.tags||
 
 
 初始安装
