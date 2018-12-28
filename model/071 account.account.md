@@ -1,4 +1,17 @@
-TBD 2018-12-22
+## Account
+
+![account](https://github.com/odooht/odoo-docs/blob/master/model/image/account.png)
+
+
+model|中文名字|note
+-----|-------|----
+account.account.type|科目类型|
+account.account.tag|科目标签|
+account.account|科目|
+account.group|科目分组|
+account.journal|账本|
+account.tax.group|税分组|
+account.tax|税|
 
 
 model|field|String|type|note

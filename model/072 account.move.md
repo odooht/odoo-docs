@@ -1,4 +1,18 @@
-TBD 2018-12-22
+## Account Move
+
+![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.move.png)
+
+
+model|中文名字|note
+-----|-------|----
+account.move|会计分录|
+account.move.line|会计分录明细|
+account.full.reconcile|全部核销|
+account.partial.reconcile|部分核销|
+
+
+
+
 
 model|field|String|type|note
 -----|-----|------|----|----
