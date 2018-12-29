@@ -273,3 +273,4 @@ model|field|String|type|note
 res.partner|property_product_pricelist||Many2one|'product.pricelist', 'Pricelist'
 
 
+
