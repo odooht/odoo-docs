@@ -51,27 +51,77 @@ account.invoice|cash_rounding_id|Cash Rounding Method|Many2one|account.cash.roun
 account.invoice|sequence_number_next|Next Number|Char|Next Number
 account.invoice|sequence_number_next_prefix|Next Number Prefix|Char|
 account.invoice|incoterm_id|Incoterm|Many2one|account.incoterms
-account.invoice||||
+account.invoice|source_email|Source Email|Char|
+account.invoice|vendor_display_name||Char|store=True
+account.invoice|invoice_icon||Char|store=False
 
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.invoice.line||||
+account.invoice.line|name|Description|Text|
+account.invoice.line|origin|Source Document|Char|
+account.invoice.line|sequence||Integer|
+account.invoice.line|invoice_id|Invoice Reference|Many2one|account.invoice
+account.invoice.line|invoice_type||Selection|
+account.invoice.line|uom_id|Unit of Measure|Many2one|uom.uom
+account.invoice.line|product_id|Product|Many2one|product.product
+account.invoice.line|product_image||Binary|Product Image
+account.invoice.line|account_id|Account|Many2one|account.account
+account.invoice.line|price_unit|Unit Price|Float|
+account.invoice.line|price_subtotal|Amount (without Taxes)|Monetary| store=True, readonly=True
+account.invoice.line|price_total|Amount (with Taxes)|Monetary| store=True, readonly=True
+account.invoice.line|price_subtotal_signed|Amount Signed|Monetary|store=True, readonly=True
+account.invoice.line|price_tax|Tax Amount|Monetary|
+account.invoice.line|quantity|Quantity|Float|required=True
+account.invoice.line|discount|Discount (%)|Float|
+account.invoice.line|invoice_line_tax_ids|Taxes|Many2many|'account.tax','account_invoice_line_tax', 'invoice_line_id', 'tax_id'
+account.invoice.line|account_analytic_id|Analytic Account|Many2one|account.analytic.account
+account.invoice.line|analytic_tag_ids|Analytic Tags|Many2many|account.analytic.tag
+account.invoice.line|company_id|Company|Many2one|res.company
+account.invoice.line|partner_id|Partner|Many2one|res.partner
+account.invoice.line|currency_id||Many2one|res.currency
+account.invoice.line|res.currency||Many2one|res.currency
+account.invoice.line|is_rounding_line|Rounding Line|Boolean|
+account.invoice.line|display_type||Selection|
+
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.invoice.tax||||
-
+account.invoice.tax|invoice_id|Invoice|Many2one|account.invoice
+account.invoice.tax|name|Tax Description|Char|required=True
+account.invoice.tax|tax_id|Tax|Many2one|account.tax
+account.invoice.tax|account_id|Tax Account|Many2one|account.account
+account.invoice.tax|account_analytic_id|Analytic account|Many2one|account.analytic.account
+account.invoice.tax|analytic_tag_ids|Analytic Tags|Many2many|account.analytic.tag
+account.invoice.tax|amount||Monetary|Tax Amount
+account.invoice.tax|amount_rounding||Monetary|Amount Delta
+account.invoice.tax|amount_total|Amount Total|Monetary|
+account.invoice.tax|manual||Boolean|
+account.invoice.tax|sequence||Integer|
+account.invoice.tax|company_id|Company|Many2one|res.company
+account.invoice.tax|currency_id||Many2one|res.currency
+account.invoice.tax|base|Base|Monetary|
 
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.payment.term||||
+account.payment.term|name|Payment Terms|Char| translate=True, required=True
+account.payment.term|active||Boolean|default=True
+account.payment.term|note|Description on the Invoice|Text|translate=True
+account.payment.term|line_ids|Terms|One2many|'account.payment.term.line', 'payment_id'
+account.payment.term|company_id|Company|Many2one|res.company
+account.payment.term|sequence||Integer|required=True, default=10
 
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.payment.term.line||||
+account.payment.term.line|value|Type|Selection|
+account.payment.term.line|value_amount|Value|Float|
+account.payment.term.line|days|Number of Days|Integer| required=True, default=0
+account.payment.term.line|day_of_the_month|Day of the month|Integer|
+account.payment.term.line|option||Selection|required=True, string='Options'
+account.payment.term.line|payment_id|Payment Terms|Many2one|account.payment.term
+account.payment.term.line|sequence||Integer|
 
 
 
