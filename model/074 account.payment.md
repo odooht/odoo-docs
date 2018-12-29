@@ -2,20 +2,51 @@ TBD 2018-12-22
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.payment.method||||
+account.payment.method|name||Char|required=True, translate=True
+account.payment.method|code||Char|required=True
+account.payment.method|payment_type||Selection|('inbound', 'Inbound'), ('outbound', 'Outbound')
 
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.abstract.payment||||
+account.abstract.payment|invoice_ids|Invoices|Many2many|account.invoice
+account.abstract.payment|multi|Multi|Boolean|
+account.abstract.payment|payment_type|Payment Type|Selection|('outbound', 'Send Money'), ('inbound', 'Receive Money')
+account.abstract.payment|payment_method_id|Payment Method Type|Many2one|account.payment.method
+account.abstract.payment|payment_method_code||Char|
+account.abstract.payment|partner_type||Selection|('customer', 'Customer'), ('supplier', 'Vendor')
+account.abstract.payment|partner_id|Partner|Many2one|res.partner
+account.abstract.payment|amount|'Payment Amount|Monetary|required=True
+account.abstract.payment|currency_id|Payment Date|Many2one|required=True, copy=False
+account.abstract.payment|payment_date|Payment Date|Date|
+account.abstract.payment|communication|Memo|Char|
+account.abstract.payment|journal_id|||
+account.abstract.payment|hide_payment_method|Payment Journal|Many2one|account.journa
+account.abstract.payment|payment_difference||Boolean|
+account.abstract.payment|payment_difference_handling||Monetary|readonly=True
+account.abstract.payment|writeoff_account_id|Difference Account|Many2one|account.account
+account.abstract.payment|writeoff_label|Journal Item Label|Char|default='Write-Off'
+account.abstract.payment|partner_bank_account_id|Recipient Bank Account|Many2one|res.partner.bank
+account.abstract.payment|show_partner_bank_account||Boolean|
+
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.register.payments||||
-
+account.register.payments|group_invoices|Group Invoices|Boolean|
+account.register.payments|show_communication_field||Boolean|
 
 
 model|field|String|type|note
 -----|-----|------|----|----
-account.payment||||
+account.payment|company_id|Company|Many2one|res.company
+account.payment|name||Char|readonly=True, copy=False
+account.payment|state|Status|Selection|('draft', 'Draft'), ('posted', 'Posted'), ('sent', 'Sent'), ('reconciled', 'Reconciled'), ('cancelled', 'Cancelled')
+account.payment|payment_type||Selection|
+account.payment|payment_reference||Char|
+account.payment|move_name|Journal Entry Name|Char|readonly=True,default=False, copy=False,
+account.payment|destination_account_id||Many2one|account.account
+account.payment|destination_journal_id|Transfer To|Many2one|account.journal
+account.payment|invoice_ids|Invoices|Many2many|copy=False, readonly=True
+account.payment|reconciled_invoice_ids|Reconciled Invoices|Many2many|Many2manye
+account.payment|has_invoices||Boolean|readonly=True
 
