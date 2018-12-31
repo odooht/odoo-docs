@@ -1,3 +1,16 @@
+## Account Invoice
+
+![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.invoice.png)
+
+![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.invoice.partner.png)
+
+
+model|中文名字|note
+-----|-------|----
+account.invoice||
+
+
+
 TBD 2018-12-22
 
 model|field|String|type|note

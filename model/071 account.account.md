@@ -1,6 +1,6 @@
 ## Account
 
-![account](https://github.com/odooht/odoo-docs/blob/master/model/image/account.png)
+![account](https://github.com/odooht/odoo-docs/blob/master/model/image/account.account.png)
 
 
 model|中文名字|note
@@ -12,6 +12,12 @@ account.group|科目分组|
 account.journal|账本|
 account.tax.group|税分组|
 account.tax|税|
+
+## Company
+
+![account](https://github.com/odooht/odoo-docs/blob/master/model/image/account.company.png)
+
+
 
 
 model|field|String|type|note

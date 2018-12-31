@@ -1,3 +1,14 @@
+## Account Payment
+
+![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.payment.png)
+
+
+model|中文名字|note
+-----|-------|----
+account.payment||
+
+
+
 TBD 2018-12-22
 
 model|field|String|type|note

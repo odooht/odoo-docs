@@ -1,3 +1,14 @@
+## Account Bank Statement
+
+![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.bank.statement.png)
+
+
+model|中文名字|note
+-----|-------|----
+||
+
+
+
 TBD 2018-12-22
 
 model|field|String|type|note
