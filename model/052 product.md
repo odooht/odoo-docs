@@ -21,6 +21,7 @@ product.template.attribute.line|产品模版属性可配置项|
 product.template.attribute.value|产品模版属性值|
 product.template.attribute.exclusion|产品属性除外值
 
+
 ## 产品价格
 
 ![product.price](https://github.com/odooht/odoo-docs/blob/master/model/image/product.price.png)
@@ -41,33 +42,23 @@ model|中文名字|note
 product.supplierinfo|产品的供应商信息|
 
 
+## 说明
+* 产品模版 定义各种属性, 成为产品变体
+* 直接销售的是产品变体
+* 因此在销售/采购/库存管理中说的产品, 都是指产品变体
+* 产品属性通常是颜色/规格, 这些不影响包装的属性
+* 因此, 产品的包装形式定义在产品模版上
+* 产品模版的多种属性的笛卡尔乘积形成多个产品变种
+* 无意义的笛卡尔乘积项, 由product.template.attribute.exclusion 过滤掉
+* 产品的价格很啰嗦
+* 有列表价格和成本价
+* 各属性有自己的额外价格
+* 产品模版的价格 + 属性价格 = 产品变种的价格
+* 产品变种可以直接设定价格
+* 产品有多个供应商
+* 针对特定客户可以设定特定的价格表
+* 初始安装, product.category 3条记录. 可销售 费用类 所有
 
-
-初始安装
-* product.category 3条记录
-* 可销售 费用类 所有
-
-product.template
-* 产品模版
-* 分为 服务类, 消耗品, 库存类
-* 可销售 可租赁 可采购
-* 销售单位和采购单位可以不一致
-* 有多种包装形式, 通过产品变种计算而得
-* 有多个供应商
-* 有多个属性
-* 属性的排列组合, 构成多个变种
-* 价格组成, 有多个项目
-
-product.category
-* parent\_id, child\_id 注意没有s
-* 父子结构
-* 
-
-product.product
-* 每个产品变种是 产品模版的一个特例
-* 好几个价格 需要再梳理下
-* 产品属性值
-* 有多种包装形式
 
 
 

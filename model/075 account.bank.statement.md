@@ -1,11 +1,26 @@
+包含文件:  
+account_bank_statement.py  
+
+
 ## Account Bank Statement
 
-![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.bank.statement.png)
+![account.bank.statement](https://github.com/odooht/odoo-docs/blob/master/model/image/account.bank.statement.png)
 
 
 model|中文名字|note
 -----|-------|----
-||
+account.bank.statement|银行对账单|
+account.bank.statement.line|银行对账单明细|
+account.bank.statement.cashbox|银行对账单钱箱|
+account.bank.cashbox.line|钱箱明细|
+
+
+## 说明
+* 银行对账单
+* 自动产生会计凭证
+* cashbox 钱箱的作用?
+
+
 
 
 

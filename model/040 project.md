@@ -14,10 +14,12 @@ project.task|任务|
 project.task.type|任务类型|
 project.tags||
 
-
-初始安装
-* mail.message.subtype 增加几个类型
-* mt\_task\_new, mt\_project\_task\_new 等
+## 说明
+* 初始安装 mail.message.subtype 增加几个类型, mt\_task\_new, mt\_project\_task\_new 等
+* 一个项目有多个任务
+* 每个任务有自己所处的阶段
+* 每个任务分配给某个员工去完成
+* 每个员工都是资源, 资源有工时/休假等设置
 
 
 

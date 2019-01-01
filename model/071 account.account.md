@@ -1,3 +1,11 @@
+包含文件:  
+account.py  
+account_incoterms.py  
+account_fiscal_year.py  
+company.py  
+product.py  
+
+
 ## Account
 
 ![account](https://github.com/odooht/odoo-docs/blob/master/model/image/account.account.png)
@@ -9,14 +17,53 @@ account.account.type|科目类型|
 account.account.tag|科目标签|
 account.account|科目|
 account.group|科目分组|
-account.journal|账本|
+account.journal|凭证分类账簿|
 account.tax.group|税分组|
 account.tax|税|
+product.category|产品类别|
+product.template|产品模版|
 
 ## Company
 
-![account](https://github.com/odooht/odoo-docs/blob/master/model/image/account.company.png)
+![Company](https://github.com/odooht/odoo-docs/blob/master/model/image/account.company.png)
 
+model|中文名字|note
+-----|-------|----
+account.fiscal.year|财年|
+account.incoterms|国际贸易术语通用规则|
+res.company|公司|
+
+
+## 说明
+* 凭证分类账簿, 不同于中国会计常说对账本, 不要混淆
+* 中国账本指科目流水账, 对应这里的account.move按科目分组按时间排序的查询
+* 这里的分类账簿指 各种单据/票据/凭证, 分类装订成册
+* 产品/产品类别上设置科目, 以便于在采购单/销售单自动生成财务凭证时的科目设置
+* 在公司上设置一些科目/税/账本的默认值
+* 在公司上 设定期初账本和科目期初余额
+* 财年设定, 财务核算的年度不一定与自然年一致
+
+
+
+model|field|String|type|note
+-----|-----|------|----|----
+account.fiscal.year||||
+
+model|field|String|type|note
+-----|-----|------|----|----
+account.incoterms||||
+
+model|field|String|type|note
+-----|-----|------|----|----
+res.company||||
+
+model|field|String|type|note
+-----|-----|------|----|----
+product.category||||
+
+model|field|String|type|note
+-----|-----|------|----|----
+product.template||||
 
 
 

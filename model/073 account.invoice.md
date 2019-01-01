@@ -1,15 +1,35 @@
+包含文件:  
+account_invoice.py  
+account_cash_rounding.py  
+partner.py  
+
+
 ## Account Invoice
 
-![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.invoice.png)
+![account.invoice](https://github.com/odooht/odoo-docs/blob/master/model/image/account.invoice.png)
 
-![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.invoice.partner.png)
+![partner](https://github.com/odooht/odoo-docs/blob/master/model/image/account.invoice.partner.png)
 
 
 model|中文名字|note
 -----|-------|----
-account.invoice||
+account.invoice|发票或账单|
+account.invoice.line|发票或账单明细|
+account.invoice.tax|发票或账单.进项税或销项税|
+account.payment.term|支付条款|
+account.payment.term|支付条款明细|
+account.cash.rounding|零钱舍入规则|
+account.fiscal.position|财务设定|
+account.fiscal.position.tax|财务设定.税|
+account.fiscal.position.account|财务设定.科目|
+res.partner|业务伙伴|
 
 
+## 说明
+* 包括销售发票和采购账单
+* 自动生成会计凭证
+* 对应的会计凭证科目, 取自于设置, 或业务伙伴, 或账簿, 或产品
+* 业务伙伴上设置一些默认值
 
 TBD 2018-12-22
 

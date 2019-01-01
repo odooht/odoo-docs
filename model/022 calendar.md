@@ -11,7 +11,8 @@ calendar.event.type|事件标签|
 calendar.event.attendee|听众|
 calendar.alarm|提醒|
 
-
+## 说明
+* 这个模块可以玩待办事项?
 
 
 model|field|String|type|note

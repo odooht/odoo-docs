@@ -1,12 +1,27 @@
+包含文件:  
+account_payment.py  
+
+
+
 ## Account Payment
 
-![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.payment.png)
+![account.payment](https://github.com/odooht/odoo-docs/blob/master/model/image/account.payment.png)
 
 
 model|中文名字|note
 -----|-------|----
-account.payment||
+account.payment.method|支付方式|
+account.payment|收付款单|
+account.abstract.payment|收付款单.基础模型|
+account.register.payments|收付款单.导航模型|
 
+
+## 说明
+* 包括收款单和付款单
+* 与销售发票对应的是收款单
+* 与采购账单对应的是付款单
+* 收付款单自动生成会计凭证
+* 收付款科目对应现金或银行存款,决定于账簿account.journal
 
 
 TBD 2018-12-22

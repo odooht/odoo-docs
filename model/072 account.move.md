@@ -1,3 +1,7 @@
+包含文件:  
+account_move.py  
+account_analytic_line.py  
+
 ## Account Move
 
 ![account.move](https://github.com/odooht/odoo-docs/blob/master/model/image/account.move.png)
@@ -9,7 +13,19 @@ account.move|会计分录|
 account.move.line|会计分录明细|
 account.full.reconcile|全部核销|
 account.partial.reconcile|部分核销|
+account.analytic.line|辅助核算明细|
 
+
+## 说明
+* 会计分录, 会计凭证头
+* 会计分录明细, 会计凭证明细行, 对应科目,业务伙伴,产品,辅助核算
+* 对应原始凭证, 发票/账单, 收款单/付款单, 银行对账单
+* 核销模型
+
+
+model|field|String|type|note
+-----|-----|------|----|----
+account.analytic.line||||
 
 
 

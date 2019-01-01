@@ -16,18 +16,16 @@ model|中文名字|note
 crm.team|销售团队|
 
 
-
-
-初始安装
-* crm.team 创建两条记录
+## 说明
+* 销售团队是CRM的一部分
+* 单独构成模块是解耦 CRM 模块和销售模块
+* 这样可以不安装CRM模块,而在销售模块中使用销售团队
+* 初始安装, crm.team 创建两条记录
 * xmlid = sales\_team.team\_sales\_department
 * xmlid = sales\_team.salesteam\_website\_sales
-
-
 * res.groups 创建两条记录
 * xmlid = sales\_team.group\_sale\_salesman
 * xmlid = sales\_team.group\_sale\_manager
-
 
 
 

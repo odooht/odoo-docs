@@ -1,4 +1,13 @@
 
+该文件删除, 以下内容 搬到相应对其他文件中  
+
+res.company 搬家到  071 account.account 中  
+product 相关 搬家到 071 account.account 中  
+account.fiscal.year 搬家到 071 account.account 中  
+res.partner 搬家到 071 account.invoice 中  
+
+
+
 model|field|String|type|note
 -----|-----|------|----|----
 res.company|fiscalyear_last_day||Integer|
