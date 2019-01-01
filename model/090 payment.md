@@ -1,5 +1,21 @@
 TBD 2018-12-22
 
+
+## account payment
+
+![account payment](https://github.com/odooht/odoo-docs/blob/master/model/image/payment.png)
+
+
+model|中文名字|note
+-----|-------|----
+account.payment|收付款单|
+payment.acquirer|银行卡支付服务方|
+payment.icon|图标|
+payment.transaction|业务单据|
+payment.token|api接口令牌|
+
+
+
 model|field|String|type|note
 -----|-----|------|----|----
 account.payment|payment_transaction_id|Payment Transaction|Many2one|payment.transaction
