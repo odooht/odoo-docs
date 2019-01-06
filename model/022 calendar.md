@@ -102,3 +102,12 @@ calendar.event|alarm_ids|Reminders|Many2many|'calendar.alarm', <br/>'calendar_al
 calendar.event|is_highlighted|Is the Event Highlighted|Boolean|_compute_is_highlighted
 
 
+model|field|String|type|note
+-----|-----|------|----|----
+mail.activity.type|category||Selection|Name
+
+
+model|field|String|type|note
+-----|-----|------|----|----
+mail.activity|calendar_event_id|Calendar Meeting|Many2one|calendar.event
+
