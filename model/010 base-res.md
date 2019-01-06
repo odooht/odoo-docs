@@ -219,6 +219,10 @@ res.country.state|country\_id||Many2one|res.country
 res.country.state|name||Char|
 res.country|code|State Code|Char|
 
+model|function|api|args|return|note
+-----|--------|------|----|----
+res.currency|get_address_fields|api.multi||?|
+
 
 model|field|string|type|note
 -----|-----|------|----|----
