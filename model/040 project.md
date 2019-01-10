@@ -90,8 +90,8 @@ project.task|stage_id|Stage|Many2one|project.task.type
 project.task|tag_ids|Tags|Many2many|project.tags
 project.task|kanban_state|Kanban State|Selection|[('normal', 'Grey'),<br/>('done', 'Green'),<br/>('blocked', 'Red')]                        
 project.task|kanban_state_label|Kanban State Label|Char|
-project.task|create_date||Datetime|Created On
-project.task|write_date||Datetime|Last Updated On
+project.task|create_date|Created On|Datetime|
+project.task|write_date|Last Updated On|Datetime|
 project.task|date_start|Starting Date|Datetime|
 project.task|date_end|Ending Date|Datetime|index=True
 project.task|date_assign|Assigning Date|Datetime|
@@ -115,7 +115,7 @@ project.task|legend_normal|Kanban Ongoing Explanation|Char|
 project.task|parent_id|Parent Task|Many2one|index=True
 project.task|child_ids|Sub-tasks|One2many|'project.task', 'parent_id'
 project.task|subtask_project_id|Sub-task Project|Many2one|project.project
-project.task|subtask_count||Integer|Sub-task count
+project.task|subtask_count|Sub-task count|Integer|
 project.task|email_from|Email|Char|index=True
 project.task|email_cc|Watchers Emails|Char|
 project.task|working_hours_open|Working hours to assign|Float|compute
