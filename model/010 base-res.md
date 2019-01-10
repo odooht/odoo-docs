@@ -151,7 +151,7 @@ model|field|string|type|relation|note
 res.partner.category|name||Char||required=True, <br/>translate=True
 res.partner.category|color||Integer||
 res.partner.category|parent\_id|Parent Category|Many2one|res.partner.category|index=True, <br>ondelete='cascade'
-res.partner.category|child\_ids|Child Tags|One2many|res.partner.category,parent\_id|
+res.partner.category|child\_ids|Child Tags|One2many|res.partner.category,<br/>parent\_id|
 res.partner.category|active||Boolean||default=True, <br/>The active field allows you to hide the category without removing it.
 res.partner.category|parent\_path||Char||
 res.partner.category|partner\_ids||Many2many|res.partner|
@@ -220,7 +220,7 @@ res.country.state|name||Char|
 res.country|code|State Code|Char|
 
 model|function|api|args|return|note
------|--------|------|----|----
+-----|--------|---|----|------|----
 res.currency|get_address_fields|api.multi||?|
 
 
