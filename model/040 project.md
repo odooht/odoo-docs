@@ -39,9 +39,9 @@ project.task.type|description||Text|
 project.task.type|sequence||Integer|
 project.task.type|project_ids|Projects|Many2many|project.project
 project.task.type|legend_priority|Starred Explanation|Char|
-project.task.type|legend_blocked||Char|Red Kanban Label
-project.task.type|legend_done||Char|Green Kanban Label
-project.task.type|legend_normal||Char|Grey Kanban Label
+project.task.type|legend_blocked|Red Kanban Label|Char|
+project.task.type|legend_done|Green Kanban Label|Char|
+project.task.type|legend_normal|Grey Kanban Label|Char|
 project.task.type|mail_template_id|Email Template|Many2one|mail.template
 project.task.type|fold|Folded in Kanban|Boolean|
 project.task.type|rating_template_id|Rating Email Template|Many2one|mail.template
@@ -50,7 +50,7 @@ project.task.type|auto_validation_kanban_state||Boolean|default=False
 
 model|field|String|type|note
 -----|-----|------|----|----
-project.project|name||Char|Name
+project.project|name|Name|Char|
 project.project|active||Boolean|default=True
 project.project|sequence||Integer|default=10
 project.project|partner_id|Customer|Many2one|res.partner
@@ -76,7 +76,7 @@ project.project|percentage_satisfaction_task|Happy % on Task|Integer|store=True
 project.project|rating_request_deadline||Datetime|
 project.project|rating_status||Selection|
 project.project|rating_status_period||Selection|
-project.project|portal_show_rating||Boolean|Rating visible publicly
+project.project|portal_show_rating|Rating visible publicly|Boolean|
 
 
 model|field|String|type|note
