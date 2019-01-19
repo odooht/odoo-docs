@@ -15,8 +15,8 @@
 
 功能|方法名|参数|返回值|返回
 ---|-----|---|------|---
-查找|search|domain, fields=[], offset=0, limit=None, order=None|ids|查找到到所有记录到id列表
-查找并读取|search_read|domain=[], fields=[], offset=0, limit=None, order=None |records|查找到到所有记录列表
+查找|search|domain, fields=[], <br>offset=0, limit=None, order=None|ids|查找到到所有记录到id列表
+查找并读取|search_read|domain=[], fields=[], <br>offset=0, limit=None, order=None |records|查找到到所有记录列表
 读取|read|id或ids,fields|records|对应到所有到记录列表
 创建|create|vals|id|新创建的记录的id
 更新|write|id, vals|boolean|true或false
