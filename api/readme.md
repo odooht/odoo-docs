@@ -15,8 +15,8 @@
 
 功能|方法名|参数|返回值|返回
 ---|-----|---|------|---
-查找|search|domain|ids|查找到到所有记录到id列表
-查找并读取|search_read|domain, fields|records|查找到到所有记录列表
+查找|search|domain, fields=[], offset=0, limit=None, order=None|ids|查找到到所有记录到id列表
+查找并读取|search_read|domain=[], fields=[], offset=0, limit=None, order=None |records|查找到到所有记录列表
 读取|read|id或ids,fields|records|对应到所有到记录列表
 创建|create|vals|id|新创建的记录的id
 更新|write|id, vals|boolean|true或false
@@ -29,6 +29,9 @@ domain|list|[('name','like','smith')]|查询条件, 自定义的格式, 后续�
 id|int|2|记录的id, 整型数
 ids|list|[1,2,3]|记录的id列表, 列表, 其中的元素是id
 fields|list|['name','login','email']|查询的哪些字段, 列表, 其中的元素是字段名
+offset|int|0|被忽略跳过的记录数,默认为0
+limit|int|0|限制返回的记录数,默认为0,不限制
+order|char|id desc,name|排序条件
 vals|dict|{'name':'smith',  'email':'smith@odooht.com'}|创建或修改时, 各字段的值
 records|list|[record]|查询到到结果, 列表, 其中到元素record
 record|dict|[{'id':1, 'name':'smith',  'email':'smith@odooht.com'}]|记录, 字典, key-value键值对, key是字段, value是字段的值
