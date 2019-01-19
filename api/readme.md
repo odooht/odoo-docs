@@ -32,9 +32,9 @@ fields|list|['name','login','email']|查询的哪些字段, 列表, 其中的元
 offset|int|0|被忽略跳过的记录数,默认为0
 limit|int|0|限制返回的记录数,默认为0,不限制
 order|char|id desc,name|排序条件
-vals|dict|{'name':'smith',  'email':'smith@odooht.com'}|创建或修改时, 各字段的值
-records|list|[record]|查询到到结果, 列表, 其中到元素record
-record|dict|[{'id':1, 'name':'smith',  'email':'smith@odooht.com'}]|记录, 字典, key-value键值对, key是字段, value是字段的值
+vals|dict|{'name':'smith',<br>'email':'smith@odooht.com'}|创建或修改时, 各字段的值
+records|list|[record]|查询到到结果, 列表, 其中的元素是record
+record|dict|[{'id':1, 'name':'smith',<br>'email':'smith@odooht.com'}]|记录, 字典, key-value键值对, key是字段, value是字段的值
 
 
 domain 的格式  
