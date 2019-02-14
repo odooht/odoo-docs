@@ -216,9 +216,11 @@ but we access database from pgAdmin with user and password
 * 执行更新密码语句  
 * 退出数据库命令行方式  
 ```
-sudo -u postgres psql  
+sudo -u postgres -s /bin/bash  
+psql  
 ALTER USER odoo WITH PASSWORD 'odoo11';  
 \q 
+exit
 ```
 
 ### postgre configure, so  pgAmin  access database  
