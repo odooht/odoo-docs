@@ -18,8 +18,12 @@ https://www.virtualbox.org/
 # ubuntu  
 https://www.ubuntu.com/download/server  
 
-### install Ubuntu server 16.04.4
+ubuntu 18 下载非 live 版本的
+http://cdimage.ubuntu.com/releases/18.04.2/release/ubuntu-18.04.2-server-amd64.iso  
 
+
+### install Ubuntu server 16.04.4
+#### for ubuntu 16
 安装 ubuntu 16,  
 注意 最后选择安装 OpenSSH 和 postgres  
 postgres 也可以用其他方式安装, 安装办法可参考postgres官网  
@@ -39,10 +43,19 @@ Software selection = OpenSSH server
 Install the GRUB boot loader on a hard disk = Yes  
 Finish the installation  
 
+#### for ubuntu 18 live
+国内镜像地址  
+http://mirrors.163.com/ubuntu  
+
+
 ### ubuntu network  
 显示ubuntu的网卡  
 ```
 ifconfig -a  
+```
+或者
+```
+ip a
 ```
 该命令显示所有的网卡 show all network  
 ubuntu 16.4.3有三个网卡, 与创建虚拟机时的网卡配置对应  
@@ -58,6 +71,7 @@ ubuntu 16.4.3有三个网卡, 与创建虚拟机时的网卡配置对应
 ### Ubuntu Configure network  
 配置网络  
 
+#### for ubuntu 16
 打开并编辑配置文件  
 ```
 sudo nano /etc/network/interfaces  
@@ -95,6 +109,71 @@ netmask 255.255.255.0
 ```
 sudo /etc/init.d/networking restart  
 ifconfig -a   
+```
+
+#### for ubuntu 18
+ubuntu 18 使用 netplan 配置网络
+查看默认网卡配置文件  
+```
+cd /etc/netplan
+ls
+sudo nano /etc/netplan/01-netcfg.yaml
+```
+
+复制两个配置文件, 并打开编辑  
+```  
+sudo cp /etc/netplan/01-netcfg.yaml /etc/netplan/02-netcfg.yaml 
+sudo cp /etc/netplan/01-netcfg.yaml /etc/netplan/03-netcfg.yaml 
+sudo nano /etc/netplan/02-netcfg.yaml
+sudo nano /etc/netplan/03-netcfg.yaml
+```
+
+配置文件内容如下  
+```
+# This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      dhcp4: yes
+```
+
+将第二块网卡和第三块网卡正确配置好  
+这是第二块网卡  
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s8:
+      dhcp4: yes
+```
+这是第三块网卡  
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s9:
+      dhcp4: yes
+```
+
+测试配置
+```
+sudo netplan try
+```
+
+应用配置
+```
+sudo netplan apply
+```
+
+查看ip
+```
+ifconfig -a
+ip a
 ```
 
 ### ubuntu update  
@@ -179,7 +258,7 @@ sudo -H pip3 install --upgrade pip
 
 
 sudo apt-get install libxml2-dev libxslt-dev libevent-dev libsasl2-dev libldap2-dev  
-sudo pip install -r requirements.txt  
+sudo pip install -r /opt/odoo/server/requirements.txt  
 ```
 
 #### for odoo12
@@ -187,6 +266,7 @@ sudo pip install -r requirements.txt
 安装 python3-pip,   
 安装 python 的依赖包  
 
+for ubuntu 16  
 ```
 sudo apt install python3-pip  
 
@@ -202,6 +282,15 @@ export LC_ALL=en_US.UTF-8
 ```
 
 
+for ubuntu 18  
+```
+sudo apt install python3-pip  
+
+sudo apt install libldap2-dev libsasl2-dev  
+sudo apt install libxml2-dev libxslt1-dev
+sudo pip3 install -r requirements.txt  
+```
+
 ### Create User "odoo" in database
 
 在数据库中创建一个用户 odoo  
@@ -216,9 +305,9 @@ but we access database from pgAdmin with user and password
 * 执行更新密码语句  
 * 退出数据库命令行方式  
 ```
-sudo -u postgres -s /bin/bash  
+sudo su - postgres -s /bin/bash  
 psql  
-ALTER USER odoo WITH PASSWORD 'odoo11';  
+ALTER USER odoo WITH PASSWORD 'odoo12';  
 \q 
 exit
 ```
