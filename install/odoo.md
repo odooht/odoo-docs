@@ -13,21 +13,21 @@ https://www.virtualbox.org/
 网卡1 默认 NAT  
 网卡2 Host-only  
 网卡3 桥接  
-存储 选择盘片 ubuntu 18  
+存储 选择盘片 ubuntu  
 
 # ubuntu  
+
+## 下载
 https://www.ubuntu.com/download/server  
+http://releases.ubuntu.com/  
 
 ubuntu 18 下载非 live 版本的
 http://cdimage.ubuntu.com/releases/18.04.2/release/ubuntu-18.04.2-server-amd64.iso  
 
-
-### install Ubuntu server 16.04.4
-#### for ubuntu 16
-安装 ubuntu 16,  
+## install Ubuntu server
+### for ubuntu 16 或 ubuntu 18 no live
+安装 ubuntu 16 或 ubuntu 18 no live  
 注意 最后选择安装 OpenSSH 和 postgres  
-postgres 也可以用其他方式安装, 安装办法可参考postgres官网  
-这里选择用ubuntu自动安装postgres  
 
 Select a language = Englilsh  
 Select your location = other - Asia - China  
@@ -43,12 +43,12 @@ Software selection = OpenSSH server
 Install the GRUB boot loader on a hard disk = Yes  
 Finish the installation  
 
-#### for ubuntu 18 live
-国内镜像地址  
+### for ubuntu 18 live
+注意选择国内镜像地址  
 http://mirrors.163.com/ubuntu  
+http://cn.archive.ubuntu.com/ubuntu  
 
-
-### ubuntu network  
+## ubuntu network  
 显示ubuntu的网卡  
 ```
 ifconfig -a  
@@ -58,7 +58,7 @@ ifconfig -a
 ip a
 ```
 该命令显示所有的网卡 show all network  
-ubuntu 16.4.3有三个网卡, 与创建虚拟机时的网卡配置对应  
+ubuntu 有三个网卡, 与创建虚拟机时的网卡配置对应  
 * enp0s3  
 * enp0s8  
 * enp0s9  
@@ -67,11 +67,10 @@ ubuntu 16.4.3有三个网卡, 与创建虚拟机时的网卡配置对应
   the host address is 192.168.56.1  
 * enp0s9 is bridge to host ethernet adapter  
 
-
-### Ubuntu Configure network  
+## Ubuntu Configure network  
 配置网络  
 
-#### for ubuntu 16
+### for ubuntu 16
 打开并编辑配置文件  
 ```
 sudo nano /etc/network/interfaces  
@@ -111,21 +110,13 @@ sudo /etc/init.d/networking restart
 ifconfig -a   
 ```
 
-#### for ubuntu 18
+### for ubuntu 18
 ubuntu 18 使用 netplan 配置网络
-查看默认网卡配置文件  
-```
-cd /etc/netplan
-ls
-sudo nano /etc/netplan/01-netcfg.yaml
-```
 
-复制两个配置文件, 并打开编辑  
-```  
-sudo cp /etc/netplan/01-netcfg.yaml /etc/netplan/02-netcfg.yaml 
-sudo cp /etc/netplan/01-netcfg.yaml /etc/netplan/03-netcfg.yaml 
-sudo nano /etc/netplan/02-netcfg.yaml
-sudo nano /etc/netplan/03-netcfg.yaml
+for ubuntu 18 no live  
+查看并编辑网卡配置文件  
+```
+sudo nano /etc/netplan/01-netcfg.yaml
 ```
 
 配置文件内容如下  
@@ -138,26 +129,29 @@ network:
   ethernets:
     enp0s3:
       dhcp4: yes
-```
-
-将第二块网卡和第三块网卡正确配置好  
-这是第二块网卡  
-```
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
     enp0s8:
       dhcp4: yes
-```
-这是第三块网卡  
-```
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
     enp0s9:
       dhcp4: yes
+```
+
+for ubuntu 18 live  
+查看并编辑网卡配置文件  
+```
+sudo nano /etc/netplan/50-cloud-init.yaml
+```
+
+配置文件内容如下  
+```
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: true
+    enp0s8:
+      dhcp4: true
+    enp0s9:
+      dhcp4: true
+  version: 2
 ```
 
 测试配置
@@ -271,7 +265,7 @@ for ubuntu 16
 sudo apt install python3-pip  
 
 sudo apt install libldap2-dev libsasl2-dev  
-sudo pip3 install -r requirements.txt  
+sudo pip3 install -r /opt/odoo/server/requirements.txt  
 ```
 
 安装过程中可能出错, 需要配置下 local  
@@ -288,8 +282,20 @@ sudo apt install python3-pip
 
 sudo apt install libldap2-dev libsasl2-dev  
 sudo apt install libxml2-dev libxslt1-dev
-sudo pip3 install -r requirements.txt  
+sudo pip3 install -r /opt/odoo/server/requirements.txt  
 ```
+
+### install postgres
+ubuntu 16,  ubuntu 18 no live, 可以默认安装 postgres  
+ubuntu 18 live, 默认安装 postgres 不成功  
+
+postgres官方指南  
+https://www.postgresql.org/download/linux/ubuntu/  
+
+```
+sudo apt install postgresql
+```
+
 
 ### Create User "odoo" in database
 
@@ -305,7 +311,7 @@ but we access database from pgAdmin with user and password
 * 执行更新密码语句  
 * 退出数据库命令行方式  
 ```
-sudo su - postgres -s /bin/bash  
+sudo su - postgres 
 psql  
 ALTER USER odoo WITH PASSWORD 'odoo12';  
 \q 
@@ -317,7 +323,7 @@ exit
 
 打开并编辑文件  
 ```
-sudo nano /etc/postgresql/9.5/main/pg_hba.conf  
+sudo nano /etc/postgresql/10/main/pg_hba.conf  
 ```
 
 行92,  line 92  
@@ -328,7 +334,7 @@ host all all 0.0.0.0/0  md5
 
 打开并编辑文件  
 ```
-sudo nano /etc/postgresql/9.5/main/postgresql.conf  
+sudo nano /etc/postgresql/10/main/postgresql.conf  
 ```
 行58  line 58  
 ```
